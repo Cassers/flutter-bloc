@@ -14,7 +14,7 @@ class BlocsProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => UsernameCubit(),)
+        BlocProvider(create: (context) => UsernameCubit(), lazy: true,)
       ],
       child: const MyApp(),
     );
