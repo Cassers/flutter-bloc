@@ -1,4 +1,4 @@
-export '01_simple_cubit/cubit_screen.dart';
+export '../01_simple_cubit/cubit_screen.dart';
 export '02_cubit_router/router_screen.dart';
 export '03_multiple_cubits/multiple_cubits_screen.dart';
 export '04_guest/guests_screen.dart';
