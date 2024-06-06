@@ -1,14 +1,20 @@
 import 'package:bloc/bloc.dart';
-import 'package:blocs_app/config/config.dart';
 import 'package:equatable/equatable.dart';
 
 part 'pokemon_event.dart';
 part 'pokemon_state.dart';
 
 class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
-  PokemonBloc() : super(const PokemonState()){
+  final Future<String> Function(int pokemonId) _fetchPokemonName;
+
+  PokemonBloc({
+    required Future<String> Function(int pokemonId) fetchPokemon,
+  }) : 
+    _fetchPokemonName = fetchPokemon,
+    super(const PokemonState()){
     on<AddPokemonEvent>(_addPokemon);
   }
+
 
   Future fetchPokemonName(int id) async {
 
@@ -17,7 +23,7 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
     }
 
     try{
-      final pokemonName = await PokemonInformation.getPokemonName(id);
+      final pokemonName = await _fetchPokemonName(id);
       add(AddPokemonEvent(id, pokemonName));
       return pokemonName;
     // ignore: empty_catches
