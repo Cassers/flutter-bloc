@@ -5,10 +5,14 @@ import 'blocs.dart';
 GetIt getIt = GetIt.instance;
 
 void serviceLocatorInit(){
-  getIt.registerSingleton(UsernameCubit());
-  getIt.registerSingleton(RouterSimpleCubit());
-  getIt.registerSingleton(CounterCubit());
-  getIt.registerSingleton(ThemeCubit());
-  getIt.registerSingleton(GuestsBloc());
-  getIt.registerSingleton(PokemonBloc(fetchPokemon: PokemonInformation.getPokemonName));
+  getIt.registerLazySingleton(() => UsernameCubit());
+  getIt.registerLazySingleton(() => RouterSimpleCubit());
+  getIt.registerLazySingleton(() => CounterCubit());
+  getIt.registerLazySingleton(() => ThemeCubit());
+  getIt.registerLazySingleton(() => GuestsBloc());
+  getIt.registerLazySingleton(() => PokemonBloc(fetchPokemon: PokemonInformation.getPokemonName));
+  getIt.registerLazySingleton(() => HistoricLocationBloc());
+  getIt.registerLazySingleton(() => GeolocationCubit(
+    onNewUserLocationCallback: getIt<HistoricLocationBloc>().onNewUserLocation,
+  )..watchUserLocation());
 }

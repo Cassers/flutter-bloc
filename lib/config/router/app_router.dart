@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:blocs_app/presentation/screens/screens.dart';
+import 'package:blocs_app/presentation/screens.dart';
 
 
 final _publicRouter = GoRouter(
