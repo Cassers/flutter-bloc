@@ -1,5 +1,4 @@
 import 'package:blocs_app/config/helpers/random_generator.dart';
-import 'package:blocs_app/presentation/03_multiple_cubits/cubit/theme_cubit.dart';
 import 'package:blocs_app/presentation/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
